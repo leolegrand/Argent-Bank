@@ -10,3 +10,30 @@
   color: #fff;
   margin-bottom: 2rem;
 }
+
+.form__buttons {
+  margin: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-button {
+  width: 100px;
+}
+
+.form__inputs {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-input {
+  padding: 10px;
+}
+
+.edit-input:focus {
+  box-shadow: 0px 0px 3px 2px #00bc77;
+}

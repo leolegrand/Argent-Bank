@@ -4,9 +4,9 @@ import Footer from '../../Components/Footer/Footer'
 import Header from '../../Components/Header/Header'
 import FeatureItem from '../../Components/FeatureItem/FeatureItem'
 
-import iconChat from '../../assets/img/icon-chat.png'
-import iconMoney from '../../assets/img/icon-money.png'
-import iconSecurity from '../../assets/img/icon-security.png'
+import iconChat from '../../Components/FeatureItem/icon-chat.png'
+import iconMoney from '../../Components/FeatureItem/icon-money.png'
+import iconSecurity from '../../Components/FeatureItem/icon-security.png'
 
 import './homepage.css'
 

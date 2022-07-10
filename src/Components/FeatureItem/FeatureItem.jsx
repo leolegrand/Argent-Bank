@@ -1,5 +1,7 @@
 import React from 'react'
 
+import propTypes from 'prop-types'
+
 import './featureitem.css'
 
 const FeatureItem = ({ icon, label, description }) => {
@@ -10,6 +12,12 @@ const FeatureItem = ({ icon, label, description }) => {
       <p>{description}</p>
     </div>
   )
+}
+
+FeatureItem.propTypes = {
+  icon: propTypes.string.isRequired,
+  label: propTypes.string.isRequired,
+  description: propTypes.string.isRequired,
 }
 
 export default FeatureItem

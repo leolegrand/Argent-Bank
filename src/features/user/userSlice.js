@@ -18,10 +18,12 @@ const userSlice = createSlice({
 
   reducers: {
     userAuthentification(state, action) {
+      // save user token in state
       state.token = action.payload.body.token
     },
 
     userLogin(state, action) {
+      // save user data in state
       state.isLogged = true
       state.id = action.payload.id
       state.email = action.payload.email
@@ -32,11 +34,13 @@ const userSlice = createSlice({
     },
 
     userUpdate(state, action) {
+      // modify the first and last name of the user in the state
       state.firstName = action.payload.firstName
       state.lastName = action.payload.lastName
     },
 
     userLogout() {
+      // reset the state to its initial value
       return initialState
     },
   },

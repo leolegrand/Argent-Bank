@@ -1,5 +1,7 @@
 import React from 'react'
 
+import propTypes from 'prop-types'
+
 import './account.css'
 
 const Account = ({ title, amount, description }) => {
@@ -15,6 +17,12 @@ const Account = ({ title, amount, description }) => {
       </div>
     </section>
   )
+}
+
+Account.propTypes = {
+  title: propTypes.string.isRequired,
+  amount: propTypes.string.isRequired,
+  description: propTypes.string.isRequired,
 }
 
 export default Account

@@ -27,7 +27,7 @@ const UserHeader = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    // Modifies the user's data with the API, the user's token is used as a means of authentication
     fetch('http://localhost:3001/api/v1/user/profile', {
       method: 'PUT',
       headers: {

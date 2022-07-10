@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { userLogout } from '../../features/user/userSlice'
 
+import propTypes from 'prop-types'
+
 import ArgentBankLogo from './argentBankLogo.png'
 
 import './header.css'
@@ -60,6 +62,10 @@ const Header = ({ user }) => {
       </nav>
     )
   }
+}
+
+Header.propTypes = {
+  user: propTypes.object,
 }
 
 export default Header

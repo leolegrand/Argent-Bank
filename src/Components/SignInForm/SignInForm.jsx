@@ -11,6 +11,7 @@ import './signinform.css'
 const SignInForm = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
   const [user, setUser] = useState({ email: '', password: '' })
 
   const inputHandle = (e) => {
@@ -22,7 +23,7 @@ const SignInForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    // Uses user input to make a request to the API
     const res = await fetch('http://localhost:3001/api/v1/user/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -31,7 +32,9 @@ const SignInForm = () => {
     const data = await res.json()
 
     if (data.status === 200) {
+      // Saves the user token in the store
       dispatch(userAuthentification(data))
+      // Uses the token returned by the API to retrieve user information
       fetch('http://localhost:3001/api/v1/user/profile', {
         method: 'POST',
         headers: {
@@ -40,6 +43,7 @@ const SignInForm = () => {
         },
       })
         .then((res) => res.json())
+        // Saves the user data in the store
         .then((res) => dispatch(userLogin(res.body)))
       navigate('/profile')
     } else {

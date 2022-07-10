@@ -41,7 +41,7 @@ const SignInForm = () => {
       })
         .then((res) => res.json())
         .then((res) => dispatch(userLogin(res.body)))
-      navigate('/user')
+      navigate('/profile')
     } else {
       alert(data.message)
     }
@@ -59,6 +59,7 @@ const SignInForm = () => {
             id="username"
             name="email"
             onChange={inputHandle}
+            autoComplete="on"
           />
         </div>
         <div className="input-wrapper">
@@ -67,6 +68,7 @@ const SignInForm = () => {
             type="password"
             id="password"
             name="password"
+            autoComplete="on"
             onChange={inputHandle}
           />
         </div>

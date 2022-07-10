@@ -29,11 +29,11 @@ const Header = ({ user }) => {
         </NavLink>
 
         <div>
-          <NavLink className="main-nav-item" to={'/user'}>
+          <NavLink className="main-nav-item" to={'/profile'}>
             <i className="fa fa-user-circle"></i>
             {user.firstName}
           </NavLink>
-          <NavLink className="main-nav-item" to={'/sign-in'} onClick={signOut}>
+          <NavLink className="main-nav-item" to={'/'} onClick={signOut}>
             <i className="fa fa-user-circle"></i>
             Sign Out
           </NavLink>
@@ -52,7 +52,7 @@ const Header = ({ user }) => {
           <h1 className="sr-only">Argent Bank</h1>
         </NavLink>
         <div>
-          <NavLink className="main-nav-item" to={'/sign-in'}>
+          <NavLink className="main-nav-item" to={'/login'}>
             <i className="fa fa-user-circle"></i>
             Sign In
           </NavLink>

@@ -40,6 +40,7 @@ const UserHeader = () => {
       }),
     })
     dispatch(userUpdate(userInput))
+    handleEditButton()
   }
 
   return (

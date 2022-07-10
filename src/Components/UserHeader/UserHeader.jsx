@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+
+import { useSelector, useDispatch } from 'react-redux'
+
+import { userUpdate } from '../../features/user/userSlice'
+
 import './userheader.css'
 
 const UserHeader = () => {
-  const user = useSelector((state) => state.user)
-  const userToken = localStorage.getItem('Token')
+  const dispatch = useDispatch()
+  const userState = useSelector((state) => state.user)
 
   const [toggle, setToggle] = useState(false)
 
@@ -28,15 +32,14 @@ const UserHeader = () => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${userToken}`,
+        Authorization: `Bearer ${userState.token}`,
       },
       body: JSON.stringify({
         firstName: userInput.firstName,
         lastName: userInput.lastName,
       }),
     })
-
-    window.location.reload()
+    dispatch(userUpdate(userInput))
   }
 
   return (
@@ -46,7 +49,7 @@ const UserHeader = () => {
           <h1>
             Welcome back
             <br />
-            {user.firstName} {user.lastName} !
+            {userState.firstName} {userState.lastName} !
           </h1>
           <button className="edit-button" onClick={handleEditButton}>
             Edit Name
@@ -62,7 +65,7 @@ const UserHeader = () => {
                 onChange={inputHandle}
                 className="edit-input"
                 type="text"
-                placeholder={user.firstName}
+                placeholder={userState.firstName}
                 required
               />
               <input
@@ -70,7 +73,7 @@ const UserHeader = () => {
                 onChange={inputHandle}
                 className="edit-input"
                 type="text"
-                placeholder={user.lastName}
+                placeholder={userState.lastName}
                 required
               />
             </div>

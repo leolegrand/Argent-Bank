@@ -1,8 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
+
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { login } from '../../features/login/loginSlice'
+
+import { userAuthentification, userLogin } from '../../features/user/userSlice'
+
 import './signinform.css'
 
 const SignInForm = () => {
@@ -26,9 +29,18 @@ const SignInForm = () => {
       body: JSON.stringify(user),
     })
     const data = await res.json()
-    dispatch(login(data))
+
     if (data.status === 200) {
-      localStorage.setItem('Token', data.body.token)
+      dispatch(userAuthentification(data))
+      fetch('http://localhost:3001/api/v1/user/profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${data.body.token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => dispatch(userLogin(res.body)))
       navigate('/user')
     } else {
       alert(data.message)

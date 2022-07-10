@@ -1,24 +1,22 @@
 import React from 'react'
+
 import { NavLink } from 'react-router-dom'
-import ArgentBankLogo from './argentBankLogo.png'
-import { useSelector } from 'react-redux'
+
 import { useDispatch } from 'react-redux'
-import { userReset } from '../../features/user/userSlice'
-import { logout } from '../../features/login/loginSlice'
+import { userLogout } from '../../features/user/userSlice'
+
+import ArgentBankLogo from './argentBankLogo.png'
 
 import './header.css'
 
-const Header = () => {
+const Header = ({ user }) => {
   const dispatch = useDispatch()
-  const user = useSelector((state) => state.user)
 
-  if (localStorage.getItem('Token')) {
-    const signOut = () => {
-      localStorage.removeItem('Token')
-      dispatch(logout())
-      dispatch(userReset())
-    }
+  const signOut = () => {
+    dispatch(userLogout())
+  }
 
+  if (user) {
     return (
       <nav className="main-nav">
         <NavLink to={'/'} className="main-nav-logo">

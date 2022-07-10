@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useSelector } from 'react-redux'
+
 import Footer from '../../Components/Footer/Footer'
 import Header from '../../Components/Header/Header'
 import FeatureItem from '../../Components/FeatureItem/FeatureItem'
@@ -11,6 +13,10 @@ import iconSecurity from '../../Components/FeatureItem/icon-security.png'
 import './homepage.css'
 
 const Homepage = () => {
+  document.title = 'Argent Bank - Homepage'
+  const isLogged = useSelector((state) => state.user.isLogged)
+  const userData = useSelector((state) => state.user)
+
   const features = [
     {
       icon: iconChat,
@@ -31,10 +37,9 @@ const Homepage = () => {
         'We use top of the line encryption to make sure your data and money is always safe.',
     },
   ]
-
   return (
     <>
-      <Header />
+      {isLogged ? <Header user={userData} /> : <Header />}
       <main>
         <div className="hero">
           <section className="hero-content">

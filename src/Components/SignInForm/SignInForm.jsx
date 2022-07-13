@@ -64,6 +64,7 @@ const SignInForm = () => {
             name="email"
             onChange={inputHandle}
             autoComplete="on"
+            required
           />
         </div>
         <div className="input-wrapper">
@@ -72,6 +73,7 @@ const SignInForm = () => {
             type="password"
             id="password"
             name="password"
+            required
             autoComplete="on"
             onChange={inputHandle}
           />
